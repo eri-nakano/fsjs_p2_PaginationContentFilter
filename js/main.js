@@ -1,9 +1,4 @@
-// let pageNumber;
-// let tenStudents;
-// let studentsList = Array.from(document.getElementsByTagName('li'));
- // let studentsList = Array.from(document.getElementsByTagName('li'));
- // for (let i = 0; i < pageNumber; i++){
-//pageNumber, studentList
+
 function showPage(pageNumber, studentList) {
   studentList = document.querySelectorAll('li');
 // first hide all students on the page
@@ -16,21 +11,21 @@ function showPage(pageNumber, studentList) {
   studentList[i].style.display = 'block';
   } else {studentList[i].style.display = 'none'; } }
 };
-
-showPage (4, );
-
-function appendPageLinks(studentList) {
- // determine how many pages for this student list
-let totalPage = studentList.length/10
+showPage(1,)
+function appendPageLinks(/* take a student list as an argument */studentList) {
+    studentList = document.querySelectorAll('li');
+    // determine how many pages for this student list
+    let totalPage = Math.ceil(studentList.length/10);
     // create a page link section
-    
-    // “for” every page
-        // add a page link to the page link section
-    // remove the old page link section from the site
-    // append our new page link section to the site
-    // define what happens when you click a link
-        // Use the showPage function to display the page for the link clicked
+        // “for” every page
+    for (let i = 1; i <= totalPage; i += 1){
+      let currentPage = i;
+      let pageLink = document.createElement('ul')
+      // add a page link to the page link section
+      pageLink = document.innerHTML='<li><a href="javascript:showPage('+ currentPage +')">' + currentPage + '</a><li>';
+      $('.pagination').append(pageLink);
         // mark that link as “active”
-// }
-//
-// console.log(array.from(document.getElementsByTagName('li')));
+      $('.pagination .active').append(currentPage);
+}
+}
+appendPageLinks();
