@@ -1,4 +1,3 @@
-
 function showPage(pageNumber, studentList) {
   studentList = Array.from(document.getElementsByClassName("student-item cf"));
 // first hide all students on the page
@@ -11,7 +10,7 @@ function showPage(pageNumber, studentList) {
   studentList[i].style.display = 'block';
   } else {studentList[i].style.display = 'none'; } }
 };
-showPage(1,)
+
 function appendPageLinks(studentList) {
     studentList = Array.from(document.getElementsByClassName("student-item cf"));
     // determine how many pages for this student list
@@ -26,17 +25,21 @@ function appendPageLinks(studentList) {
       pageLink.innerHTML = '<a href = "#">' + currentPage + '</a>';
       // add a page link to the page link section
       $(pageLinkSection).append(pageLink);
-      $('.page').prepend(pageLinkSection);
+      // $('.page').remove(pageLinkSection);
       // append our new page link section to the site
       $('.page').append(pageLinkSection);
+      showPage(1,);
       // define what happens when you click a link
-      pageLink.addEventListener = ('click', function() {
+      pageLink.addEventListener('click', function(event) {
         // Use the showPage function to display the page for the link clicked
         showPage(i,studentList);
         // mark that link as “active”
-        const currentLink = document.querySelectorAll('.pagination li a');
+        const currentLink = this.querySelector('a');
+        const active = document.getElementsByClassName('active')
+        console.log(active.length);
+        active.classList.remove('active');
         currentLink.classList.add('active');
-      });
+        });
 }
 }
 appendPageLinks();
