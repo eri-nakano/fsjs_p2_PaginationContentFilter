@@ -25,9 +25,9 @@ function appendPageLinks(studentList) {
       pageLink.innerHTML = '<a href = "#">' + currentPage + '</a>';
       // add a page link to the page link section
       $(pageLinkSection).append(pageLink);
-      // $('.page').remove(pageLinkSection);
       // append our new page link section to the site
       $('.page').append(pageLinkSection);
+      document.querySelector('.pagination li a').classList.add('active');
       showPage(1,);
       // define what happens when you click a link
       pageLink.addEventListener('click', function(event) {
@@ -35,10 +35,9 @@ function appendPageLinks(studentList) {
         showPage(i,studentList);
         // mark that link as “active”
         const currentLink = this.querySelector('a');
-        const active = document.getElementsByClassName('active')
-        console.log(active.length);
-        active.classList.remove('active');
-        currentLink.classList.add('active');
+        // let active = document.getElementsByClassName('active')
+        $('.active').removeClass('active')
+        $(currentLink).addClass('active')
         });
 }
 }
